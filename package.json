@@ -1,0 +1,16 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "GraphQl Server with Prisma",
+  "main": "index.js",
+  "author": "Carlos Marchena <cmarchena77@gmail.com>",
+  "license": "NO LICENSE",
+  "private": true,
+  "dependencies": {
+    "@storybook/cli": "^3.4.8",
+    "bcryptjs": "^2.4.3",
+    "graphql-yoga": "^1.14.10",
+    "jsonwebtoken": "^8.3.0",
+    "prisma-binding": "^2.1.0"
+  }
+}
