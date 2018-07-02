@@ -6,10 +6,10 @@ const {
 } = require('../utils')
 
 async function signup(parent, args, context, info) {
-    // 1
+
     const password = await bcrypt.hash(args.password, 10)
 
-    const user = await context.prisma.mutation.createUser({
+    const user = await context.db.mutation.createUser({
         data: { ...args,
             password
         },
@@ -29,7 +29,7 @@ async function signup(parent, args, context, info) {
 
 async function login(parent, args, context, info) {
 
-    const user = await context.prisma.query.user({
+    const user = await context.db.query.user({
         where: {
             email: args.email
         }
@@ -57,7 +57,7 @@ async function login(parent, args, context, info) {
 
 function post(parent, args, context, info) {
     const userId = getUserId(context)
-    return context.prisma.mutation.createLink({
+    return context.db.mutation.createLink({
             data: {
                 url: args.url,
                 description: args.description,
@@ -71,7 +71,6 @@ function post(parent, args, context, info) {
         info,
     )
 }
-
 
 module.exports = {
     signup,
