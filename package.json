@@ -1,7 +1,7 @@
 {
-  "name": "server",
+  "name": "graphql-prisma-server",
   "version": "1.0.0",
-  "description": "GraphQl Server with Prisma",
+  "description": "GraphQL Server with Prisma Bindings",
   "main": "index.js",
   "author": "Carlos Marchena <cmarchena77@gmail.com>",
   "license": "MIT",
