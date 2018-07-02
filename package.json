@@ -4,7 +4,7 @@
   "description": "GraphQl Server with Prisma",
   "main": "index.js",
   "author": "Carlos Marchena <cmarchena77@gmail.com>",
-  "license": "NO LICENSE",
+  "license": "MIT",
   "private": true,
   "dependencies": {
     "@storybook/cli": "^3.4.8",
