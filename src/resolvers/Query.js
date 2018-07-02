@@ -2,7 +2,7 @@ function info() {
     return `This is the API of a Hackernews Clone`
 }
 
-function feed(parent, args, context, info) {
+async function feed(parent, args, context, info) {
     const where = args.filter ? {
         OR: [{
                 url_contains: args.filter
@@ -13,15 +13,33 @@ function feed(parent, args, context, info) {
         ],
     } : {}
 
-    return context.db.query.links({
+    // 1
+    const queriedLinks = await context.db.query.links({
             where,
             skip: args.skip,
             first: args.first,
             orderBy: args.orderBy
         },
-        info,
+        `{ id }`,
     )
+
+    // 2
+    const countSelectionSet = `
+    {
+      aggregate {
+        count
+      }
+    }
+  `
+    const linksConnection = await context.db.query.linksConnection({}, countSelectionSet)
+
+    // 3
+    return {
+        count: linksConnection.aggregate.count,
+        linkIds: queriedLinks.map(link => link.id),
+    }
 }
+
 
 
 
